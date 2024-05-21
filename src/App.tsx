@@ -1,7 +1,12 @@
+import Waitlist from "./pages/Waitlist"
+
+
 
 const App = () => {
   return (
-    <div>App</div>
+    <div>
+      <Waitlist />
+    </div>
   )
 }
 
