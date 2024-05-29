@@ -33,13 +33,13 @@ function Navbar() {
             <a href="/">About Us</a>
           </li>
           <li>
-            <a href="/about">What drives us</a>
+            <a href="/">What drives us</a>
           </li>
           <li>
-            <a href="/services">Hudddle Features</a>
+            <a href="/">Hudddle Features</a>
           </li>
           <li>
-            <a href="/contact">Product Roadmap</a>
+            <a href="/">Product Roadmap</a>
           </li>
           <Link to="/register">
             <button className="bg-[#5C5CE9] text-white h-[52px] w-full p-[8px] rounded-md">
@@ -54,13 +54,13 @@ function Navbar() {
             <a href="/">About Us</a>
           </li>
           <li>
-            <a href="/about">What drives us</a>
+            <a href="#">What drives us</a>
           </li>
           <li>
-            <a href="/services">Hudddle Features</a>
+            <a href="/">Hudddle Features</a>
           </li>
           <li>
-            <a href="/contact">Product Roadmap</a>
+            <a href="/">Product Roadmap</a>
           </li>
         </ul>
       </div>
