@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Waitlist from "./pages/Waitlist";
 import Register from "./pages/Register";
 import Navbar from "./components/Navbar";
-import { Footer } from "./components/Footer";
+import { Footer } from "./components/Footer.tsx";
 
 const App = () => {
     return (
