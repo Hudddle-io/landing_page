@@ -1,66 +1,208 @@
-import Navbar from "./Navbar";
+import { useEffect } from "react";
+import gsap from "gsap";
 import Man from "../assets/man-portrait.svg";
-import Checkmark from "../assets/checkmark.svg";
 import bullet1 from "../assets/bullet1.svg";
 import bullet2 from "../assets/bullet2.svg";
 import bullet3 from "../assets/bullet3.svg";
+import { Button } from "./ui/Button";
+import { Input } from "./ui/Input";
+import { Wrapper } from "./HelperComponents/Wrapper";
+import { Container } from "./HelperComponents/Container";
+import { Heading } from "./HelperComponents/Heading";
+import { Text } from "./HelperComponents/Text";
+import { Layout } from "./HelperComponents/Layout";
+import {
+    heroData,
+    heroTitleAfterSpan,
+    heroTitleBeforeSpan,
+} from "../data/heroData";
+import { Detail } from "./ui/Detail";
+import { HeadingContainer } from "./micro-components/HeadingContainer";
 
 const Hero = () => {
-  return (
-    <div className="bg-hero h-[100vh] lg:h-[650px]">
-      <Navbar />
-      <div className="flex justify-between px-6 lg:px-20 py-6">
-      <div className="">
-        <div className="w-full lg:w-[60%]">
-          <p
-            className="font-bold text-[2rem] lg:text-[50px] mb-3  lg:mb-0
-      "
-          >
-            Building trust for remote work and{" "}
-            <span className="text-[#4B9BD0]">productivity</span> in remote
-            workers.
-          </p>
-          <p className="font-normal text-[1.5rem] lg:text-[24px] w-[85%]">
-            Hudddle.io targets small and medium-sized businesses (SMBs) with remote or hybrid workforces.
-          </p>
-        </div>
+    // Timeline animations
+    const introTl = gsap.timeline({ delay: 0.02 });
 
-        <div className="flex flex-col gap-3 mb-4 mt-4">
-          <div className="flex items-center gap-4">
-            <img src={Checkmark} alt="" />
-            <p>Clear Work Objectives</p>
-          </div>
-          <div className="flex items-center gap-4">
-            <img src={Checkmark} alt="" />
-            <p>Investment Reports Every Month</p>
-          </div>
-          <div className="flex items-center gap-4">
-            <img src={Checkmark} alt="" />
-            <p>Saving Money For The Future </p>
-          </div>
-        </div>
+    useEffect(() => {
+        const introCard = document.querySelectorAll(".introCard");
+        const inputContainer = document.querySelector(".input");
+        const inputElement = inputContainer?.querySelector("input");
 
-        <div className=" flex flex-col lg:flex-row items-center relative lg:w-[552px] lg:h-[60px] w-full h-[4rem]">
-          <input
-            className="w-full h-full rounded-lg relative px-4 py-4 lg:py-2 outline-none"
-            type="email"
-            name=""
-            placeholder="Enter your email address"
-          />
-          <button className="bg-[#5C5CE9] text-white h-[52px] mt-2 lg:mt-0 px-4 py-2 w-full lg:w-[177px] lg:absolute lg:right-1 rounded-lg">
-            Join The Waitlist
-          </button>
-        </div>
-      </div>
-      </div>
-      <div className="hidden lg:flex h-[450px] w-[805px] absolute right-0 bottom-0">
-        <img src={bullet1} alt="" className="w-[250px] h-[66px] absolute top-40 right-0" />
-        <img src={bullet2} alt="" className="w-[250px] h-[66px] absolute top-60 left-40"/>
-        <img src={bullet3} alt="" className="w-[306px] h-[68px] absolute bottom-2 right-16 mr-16"/>
-        <img src={Man} alt="Man Portrait" className="h-full w-full object-fit" />
-      </div>
-    </div>
-  );
+        introTl.to(".man", {
+            scale: 1,
+            y: 0,
+            duration: 0.5,
+            ease: "power1.in",
+        });
+        introTl.to(".imgtask", {
+            x: 0,
+            opacity: 1,
+            duration: 0.5,
+            stagger: 0.3,
+            ease: "power1.in",
+        });
+        introTl.to(".text", {
+            opacity: 1,
+            y: 0,
+            delay: 0.02,
+            duration: 0.1,
+            stagger: 0.02,
+            ease: "power4.in",
+        });
+        introTl.to(".prd", {
+            opacity: 1,
+            y: 0,
+            delay: 0.1,
+            duration: 0.29,
+            ease: "power2.in",
+        });
+        introTl.to(".prdTwo", {
+            opacity: 1,
+            duration: 0.2,
+            delay: 0.1,
+            ease: "power2.in",
+        });
+        introTl.to(".prd", {
+            x: "120%",
+            delay: 0.1,
+            duration: 0.5,
+            ease: "power2.out",
+        });
+        introTl.to(".heroTwo", {
+            y: 0,
+            opacity: 1,
+            delay: 0.05,
+            duration: 0.2,
+            ease: "power2.inOut",
+        });
+        introCard.forEach((child) => {
+            introTl.to(child.firstChild, {
+                scale: 1,
+                duration: 0.3,
+                stagger: 0.01,
+                ease: "bounce.inOut(0.15)",
+            });
+            introTl.to(child.lastChild, {
+                x: 0,
+                opacity: 1,
+                stagger: 0.01,
+                ease: "power2.in",
+            });
+        });
+
+        if (inputContainer) {
+            // bring it up
+            introTl.to(inputContainer, {
+                width: "fit-content",
+                y: 0,
+                opacity: 1,
+                duration: 1.2,
+                ease: "power2.in",
+            });
+            // expand
+        }
+        introTl.to(inputContainer, {
+            width: "100%",
+            maxWidth: "552px",
+            delay: 0.2,
+            duration: 1,
+            ease: "power2.out",
+        });
+        if (inputElement) {
+            introTl.to(inputElement, {
+                display: "flex",
+                duration: 0.5,
+                ease: "power2.in",
+            });
+        }
+    });
+
+    return (
+        <Container
+            sectionId="home"
+            className={`bg-[url(/assets/svgs/hero-background.svg)] bg-cover bg-no-repeat bg-center bg-fixed`}
+            maxHeight={"auto"}
+            Justify="start"
+            layout="row"
+        >
+            <Wrapper className="h-screen flex items-center overflow-hidden">
+                <Container
+                    className="pt-14 max-sm:flex-col"
+                    maxHeight={"auto"}
+                    maxWidth={700}
+                    layout="column"
+                    Align="start"
+                    gap={24}
+                >
+                    <Heading
+                        className="overflow-hidden flex gap-2 flex-wrap"
+                        variant="heading"
+                    >
+                        {heroTitleBeforeSpan.map((el) => (
+                            <HeadingContainer list={el} />
+                        ))}
+                        <span className="relative overflow-hidden bg-gradient-to-tr from-[#4B9BD0] to-[#54C6A4] text-transparent bg-clip-text">
+                            <div className="prd absolute translate-y-10 opacity-0 bg-gradient-to-tr from-[#4B9BD0] to-[#54C6A4] w-full h-full left-0 right-0"></div>
+                            {""}{" "}
+                            <div className="prdTwo opacity-0">productivity</div>
+                        </span>{" "}
+                        {heroTitleAfterSpan.map((el) => (
+                            <HeadingContainer list={el} />
+                        ))}
+                    </Heading>
+                    <Text
+                        className="lg:pr-14 heroTwo opacity-0 translate-y-10"
+                        color="dark-3"
+                        variant="text-1"
+                    >
+                        Huddle.io targets small and medium-sized businesses
+                        (SMBs) with remote or hybrid workforces.
+                    </Text>
+                    <Layout
+                        className=""
+                        array={heroData}
+                        direction="column"
+                        gap={16}
+                        element={Detail}
+                    />
+                    <Input
+                        className="input opacity-0"
+                        type="email"
+                        placeholder="Enter your email address"
+                    >
+                        <Button
+                            className="w-full lg:w-fit  ml-auto h-full lg:relative absolute bottom-0 left-0 translate-y-[150%] lg:translate-y-[0%]"
+                            progressText="processing"
+                        >
+                            Join The Waitlist
+                        </Button>
+                    </Input>
+                </Container>
+                <div className="hidden lg:flex h-[450px] w-[805px] absolute right-0 bottom-0">
+                    <img
+                        src={bullet3}
+                        alt=""
+                        className="w-[306px] h-[68px] absolute -top-[15%] right-[20%] translate-x-20 opacity-0 z-20 blur-xs imgtask"
+                    />
+                    <img
+                        src={bullet2}
+                        alt=""
+                        className="w-[250px] h-[66px] absolute top-[50%] left-[10%] z-20 -translate-x-20 opacity-0 blur-xs imgtask"
+                    />
+                    <img
+                        src={bullet1}
+                        alt=""
+                        className="w-[250px] h-[66px] absolute top-[80%] right-[20%] translate-x-20 opacity-0 z-20 blur-xs imgtask"
+                    />
+                    <img
+                        src={Man}
+                        alt="Man Portrait"
+                        className="man scale-0 translate-y-[100%] h-full w-full object-fit"
+                    />
+                </div>
+            </Wrapper>
+        </Container>
+    );
 };
 
 export default Hero;
