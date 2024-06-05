@@ -120,12 +120,11 @@ const Hero = () => {
     return (
         <Container
             sectionId="home"
-            className={`bg-[url(/assets/svgs/hero-background.svg)] bg-cover bg-no-repeat bg-center bg-fixed`}
-            maxHeight={"auto"}
+            className={`mt-10 lg:mt-0 bg-[url(/assets/svgs/hero-background.svg)] bg-cover bg-no-repeat bg-center bg-fixed min-h-screen`}
             Justify="start"
             layout="row"
         >
-            <Wrapper className="h-screen flex items-center overflow-hidden">
+            <Wrapper className="min-h-screen flex items-center overflow-hidden">
                 <Container
                     className="pt-14 max-sm:flex-col"
                     maxHeight={"auto"}
