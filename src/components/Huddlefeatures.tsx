@@ -90,6 +90,7 @@ const HudddleFeatures: React.FC<HudddleFeaturesProps> = ({ features }) => {
                     <div className="flex flex-col gap-8 py-5 px-6 lg:px-0 w-full lg:w-[40%]">
                         {/* features */}
                         <Layout
+                            direction="column"
                             gap={44}
                             array={features}
                             element={FeaturesCard}

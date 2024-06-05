@@ -12,9 +12,10 @@ export const Layout: FC<LayoutProps> = ({
     return (
         <div
             ref={layoutRef}
-            className={`${className} flex items-center h-fit`}
+            className={` flex items-center ${
+                direction === "row" ? "flex-row" : "flex-col"
+            } h-fit ${className}`}
             style={{
-                flexDirection: direction === "row" ? "row" : "column",
                 gap: gap ? `${gap}px` : "0",
             }}
         >
