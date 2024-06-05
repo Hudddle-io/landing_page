@@ -24,6 +24,7 @@ export const Footer = () => {
                         <img src={logo} alt="" />
                     </NavLink>
                     <Layout
+                        direction="row"
                         className="absolute lg:relative bottom-0 left-0 translate-y-[130%] lg:translate-y-[0%] flex-col lg:flex-row"
                         gap={40}
                         array={navigationLinks}
