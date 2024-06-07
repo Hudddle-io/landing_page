@@ -39,6 +39,7 @@ const HudddleFeatures: React.FC<HudddleFeaturesProps> = ({ features }) => {
                 toggleActions: "restart none none none",
             },
         });
+        // for features
         gsap.to(".features", {
             opacity: 1,
             duration: 0.3,
