@@ -11,26 +11,25 @@ import { FooterLinks } from "./ui/FooterLinks";
 export const Footer = () => {
     useSmoothScroll();
     return (
-        <footer className=" border-b-[2px] border-slate-300 my-10">
+        <footer className="w-full border-b-[2px] border-slate-300 my-10 absolute bottom-0 left-0 z-50">
             <Wrapper className="w-full">
                 <Container
-                    className="relative"
-                    Justify="center"
-                    Align="center"
+                    className="relative flex-col lg:flex-row items-start lg:items-center justify-start lg:justify-between gap-[7px] lg:gap-[40px]"
                     spread
                     layout="row"
                 >
-                    <NavLink to={"/#home"}>
-                        <img src={logo} alt="" />
+                    <NavLink to={"/#home"} className="mb-[14px] self-start">
+                        <img src={logo} alt="" className="w-[100px] h-[40px]" />
                     </NavLink>
                     <Layout
                         direction="row"
-                        className="absolute lg:relative bottom-0 left-0 translate-y-[130%] lg:translate-y-[0%] flex-col lg:flex-row"
-                        gap={40}
+                        className="w-full lg:w-[500px] flex-col lg:flex-row gap-[10px] lg:justify-between lg:gap-[100px]"
                         array={navigationLinks}
                         element={FooterLinks}
                     />
-                    <Button>Join the Waitlist</Button>
+                    <NavLink to={"/register"}>
+                        <Button>Join the Waitlist</Button>
+                    </NavLink>
                 </Container>
             </Wrapper>
         </footer>

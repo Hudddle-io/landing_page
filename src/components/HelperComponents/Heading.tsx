@@ -45,7 +45,7 @@ export const Heading: FC<HeadingProps> = ({
                     {children}
                 </h3>
             ) : variant === "introduction" ? (
-                <h3 className="px-[10px] py-[10px] rounded-lg bg-[#C340A11A] text-[#F178B6] text-[20px] leading-[24px] font-medium w-fit text-center mx-auto lg:mx-0">
+                <h3 className="px-[10px] py-[10px] rounded-lg bg-[#C340A11A] text-[#F178B6] text-[20px] leading-[24px] font-medium w-fit text-center ">
                     {children}
                 </h3>
             ) : null}

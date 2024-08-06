@@ -27,7 +27,7 @@ const Card: React.FC<CardProps> = ({
         layout="column"
         gap={4}
         Align="start"
-        className={`${className} lg:h-[347px] justify-evenly h-[242px] px-[40px] py-[24px] lg:w-[360px] w-full border border-gradient rounded-lg`}
+        className={`${className} lg:h-[347px] justify-evenly h-[242px] px-[40px] py-[24px] lg:w-[360px] w-full rounded-lg `}
     >
         <img className="w-[3rem]" src={image} alt="" />
         <Heading variant="title">{title}</Heading>
@@ -43,8 +43,8 @@ const Ourdrive: React.FC = () => {
             y: 0,
             x: 0,
             scale: 1,
-            duration: 0.2,
-            ease: "power2.in",
+            duration: 0.4,
+            ease: "power3.in",
             stagger: 0.5,
             scrollTrigger: {
                 trigger: ".ourDrive",
@@ -63,27 +63,23 @@ const Ourdrive: React.FC = () => {
                 <Container layout="column" gap={40} Align="start">
                     <Heading
                         variant="introduction"
-                        className="self-center lg:self-start text-center lg:text-left"
+                        className=" self-start  text-left"
                     >
                         The Challenge
                     </Heading>
 
                     <Heading
                         variant="sub-heading"
-                        className="self-center text-center lg:text-left lg:self-start"
+                        className=" text-left self-start"
                     >
                         What Drives Us
                     </Heading>
 
-                    <Text variant="text-1" className="text-center lg:text-left">
-                        The Imposed lockdowns during the COVID-19 pandemic
-                        impacted the living and working habits of millions in
-                        several industries. Working remotely has become a
-                        prominent solution to continued employment. The
-                        transition to remote work has several prospects for
-                        adaptability and international cooperation, but it also
-                        presents distinct difficulties for both employees and
-                        managers.
+                    <Text variant="text-1" className="text-left">
+                        We believe that work should be enjoyed. If we will work
+                        90% of our lives, then work should be enjoyable. Hudddle
+                        is a remote-work tool that helps teams build
+                        collaboration using gamified techniques.
                     </Text>
                 </Container>
                 <Container
@@ -95,19 +91,19 @@ const Ourdrive: React.FC = () => {
                     <Card
                         image={Image1}
                         title="Collaboration"
-                        className="collab translate-x-[60%] translate-y-44 scale-0"
+                        className="collab translate-x-[60%] translate-y-44 scale-0 effect"
                         description=" Working remotely reduces communication, collaboration between teams & management, making team development and trust building difficult"
                     />
                     <Card
                         image={Image2}
-                        className="collab translate-y-44 scale-0 "
+                        className="collab translate-y-44 scale-0 effect"
                         title="Accountability"
                         description="collab Employers worry about productivity and accountability, while employees can feel isolated and stressed by constant monitoring."
                     />
                     <Card
                         image={Image3}
                         title="Time Tracking"
-                        className="collab -translate-x-[60%] translate-y-44 scale-0"
+                        className="collab -translate-x-[60%] translate-y-44 scale-0 effect"
                         description="collab Companies need to track their remote teams to know what's being done per time, improving trust and confidence in the budding remote space."
                     />
                 </Container>

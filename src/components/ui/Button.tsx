@@ -61,7 +61,7 @@ export const Button: FC<ButtonProps> = ({
             // eslint-disable-next-line @typescript-eslint/no-misused-promises
             onMouseLeave={() => buttonTitmeline.reverse()}
             onClick={handleClick}
-            className={`${className}  w-auto flex items-center justify-center gap-2 disabled:bg-slate-500 disabled:cursor-not-allowed overflow-hidden bg-[#5C5CE9] text-white h-[52px] mt-2 lg:mt-0 px-4 py-2  rounded-lg`}
+            className={`${className} w-full lg:w-fit flex items-center justify-center gap-2 disabled:bg-slate-500 disabled:cursor-not-allowed overflow-hidden bg-[#5C5CE9] text-white h-[52px] mt-2 lg:mt-0 px-4 py-2  rounded-lg`}
         >
             <div ref={effectRef} className="relative">
                 <div className="effect absolute w-[20%] h-[40%] -translate-x-[120%] translate-y-1/2 bg-slate-50 top-0 left-0 rounded-lg opacity-15"></div>

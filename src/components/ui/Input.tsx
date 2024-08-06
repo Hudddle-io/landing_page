@@ -1,40 +1,38 @@
-import { FC, useRef } from "react";
+import { FC } from "react";
 import { InputProps } from "../../@types/Input";
+import { UseFormRegisterReturn } from "react-hook-form";
 
-export const Input: FC<InputProps> = ({
-    children,
+export const Input: FC<InputProps & { register?: UseFormRegisterReturn }> = ({
     placeholder,
     type,
     name,
-    value,
-    onChange,
+    label,
     className,
+    props,
+    children,
+    max,
+    min,
+    step,
+    register,
 }) => {
-    // const [error, setError] = useState(false);
-    const errorRef = useRef<HTMLSpanElement | null>(null);
-
     return (
-        <div
-            className={`${
-                className && className
-            } group relative min-w-[177px] flex flex-col lg:flex-row translate-y-10 items-center w-fit lg:justify-between lg:h-[60px] h-[48px] z-10  px-1 py-4 lg:py-2 bg-white rounded-lg`}
-        >
+        <div className="relative flex flex-col w-full h-fit gap-2 mb-2">
+            <label htmlFor={name} className="text-[#626F86]">
+                {label}
+            </label>
             <input
-                className="w-2/4 bg-none peer hidden focus:text-[#5C5CE9] invalid:text-red-500 h-full relative outline-none"
+                min={min}
+                max={max}
+                step={step}
+                {...props}
+                {...register} // Spread the register prop here
                 type={type}
-                name={name}
-                value={value}
+                id={name}
+                name={name} // Set the name attribute here
                 placeholder={placeholder}
-                onChange={onChange}
+                className={`${className} border-[1px] border-[#091E4224] effect placeholder:text-[#626f8687] rounded-md w-full h-[3rem] px-2 py-2 outline-none`}
             />
-            {/* anything goes here */}
             {children && children}
-            <span
-                ref={errorRef}
-                className={`absolute opacity-0 bottom-0 left-0 px-2 text-red-500 -translate-y-5 text-xs -z-10`}
-            >
-                Invalid input Type, please use an email
-            </span>
         </div>
     );
 };

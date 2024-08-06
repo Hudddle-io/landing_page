@@ -12,8 +12,19 @@
         -ms-overflow-style: none; /* IE and Edge */
         scrollbar-width: none; /* Firefox */
     }
+    .effect {
+        background: #e0e0e0;
+        box-shadow: 5px 5px 19px #bebebe, -5px -5px 19px #ffffff;
+    }
 }
 
 .no-scrollbar::-webkit-scrollbar {
     opacity: 0;
+}
+
+/* neumorphism effect */
+.effect {
+    background: #fdfcfc;
+    box-shadow: 7px 7px 10px #cacaca33, -7px -7px 10px #ffffff,
+        5px 5px 10px #cacaca33, -5px -5px 10px #ffffff;
 }

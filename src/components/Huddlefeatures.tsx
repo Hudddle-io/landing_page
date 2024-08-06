@@ -24,11 +24,10 @@ interface HudddleFeaturesProps {
 const HudddleFeatures: React.FC<HudddleFeaturesProps> = ({ features }) => {
     useGSAP(() => {
         gsap.to(".feature-imgOne", {
-            x: 0,
+            x: -10,
             opacity: 1,
             scale: 1,
             duration: 0.3,
-            stagger: 0.5,
             ease: "power2.inOut",
             scrollTrigger: {
                 trigger: ".features-sectionOne",
@@ -47,7 +46,7 @@ const HudddleFeatures: React.FC<HudddleFeaturesProps> = ({ features }) => {
             ease: "power2.inOut",
             scrollTrigger: {
                 trigger: ".features-sectionOne",
-                start: "top 30%",
+                start: "top 63%",
                 end: "top 95%",
                 scrub: 4,
                 markers: false,
@@ -56,31 +55,39 @@ const HudddleFeatures: React.FC<HudddleFeaturesProps> = ({ features }) => {
         });
     });
     return (
-        <Wrapper>
+        <Wrapper className="mt-10">
             <Container sectionId="huddle-features" layout="column" gap={80}>
-                <Container layout="column" maxWidth={826} gap={40}>
-                    <Heading
-                        className="text-center lg:text-left"
-                        variant="introduction"
+                <Container
+                    layout="row"
+                    Justify="center"
+                    gap={40}
+                    maxWidth={1400}
+                    className="w-full flex-col lg:flex-row"
+                >
+                    <Container
+                        layout="column"
+                        className="lg:w-[50%] w-full"
+                        gap={40}
                     >
-                        Innovation
-                    </Heading>
-                    <Heading
-                        className="text-center lg:text-left"
-                        variant="sub-heading"
-                    >
-                        Hudddle Features
-                    </Heading>
+                        <Heading
+                            className="text-left mr-auto"
+                            variant="introduction"
+                        >
+                            Innovation
+                        </Heading>
+                        <Heading className="text-left" variant="sub-heading">
+                            Hudddle Features
+                        </Heading>
+                    </Container>
 
                     <Text
-                        className="text-center lg:text-left"
+                        className="text-left w-full"
                         variant="text-1"
                         color="dark-3"
                     >
-                        Hudddle empowers both employers and employees to achieve
-                        peak productivity and build successful remote teams.
-                        We&apos;ve built a product that respects the remote
-                        work-life.
+                        We’re building a remote work tool that helps remote
+                        teams build collaboration using gamified task tracking
+                        and social comparison. We’re making work fun.
                     </Text>
                 </Container>
                 <Container
@@ -88,7 +95,10 @@ const HudddleFeatures: React.FC<HudddleFeaturesProps> = ({ features }) => {
                     layout="row"
                     gap={100}
                 >
-                    <div className="flex flex-col gap-8 py-5 px-6 lg:px-0 w-full lg:w-[40%]">
+                    <div className="hidden lg:flex feature-imgOne opacity-0 scale-0 translate-x-[100%]">
+                        <img width={700} src={card} alt="" />
+                    </div>
+                    <div className="flex flex-col gap-8 py-5 px-6 lg:px-0 w-full lg:w-[50%]">
                         {/* features */}
                         <Layout
                             direction="column"
@@ -96,9 +106,6 @@ const HudddleFeatures: React.FC<HudddleFeaturesProps> = ({ features }) => {
                             array={features}
                             element={FeaturesCard}
                         />
-                    </div>
-                    <div className="hidden lg:flex feature-imgOne opacity-0 scale-0 -translate-x-[200%]">
-                        <img width={700} src={card} alt="" />
                     </div>
                 </Container>
             </Container>

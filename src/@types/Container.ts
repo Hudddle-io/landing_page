@@ -1,13 +1,11 @@
-import React from "react";
+import { HTMLAttributes } from "react";
 
-export interface ContainerProps {
-    children: React.ReactNode;
+export interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
     maxWidth?: number | "auto";
     maxHeight?: number | "auto";
     gap?: number;
     layout: "row" | "column";
     margin?: number;
-    className?: string;
     spread?: boolean;
     Justify?: "center" | "end" | "start";
     Align?: "center" | "end" | "start";

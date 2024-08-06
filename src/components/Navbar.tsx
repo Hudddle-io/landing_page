@@ -94,8 +94,10 @@ function Navbar() {
 
     return (
         <nav
-            className={`border-b-2 border-gray-200 fixed top-0 left-0 w-full z-50 ${
-                scrolled ? "bg-white shadow-lg" : ""
+            className={`${
+                !scrolled && "effect"
+            } rounded-full sticky top-10 left-0 w-[90%] max-w-[1440px] mx-auto z-50 ${
+                scrolled ? "backdrop-blur-xl bg-[#ffffff8d]" : ""
             }`}
         >
             <Wrapper className="cont relative">
@@ -118,7 +120,7 @@ function Navbar() {
                         direction="row"
                         gap={40}
                     />
-                    <NavLink to={"/#home"}>
+                    <NavLink to={"/register"}>
                         <Button className="hidden lg:flex">
                             Join The Waitlist
                         </Button>
@@ -134,7 +136,11 @@ function Navbar() {
                     <Container
                         layout="column"
                         Align="start"
-                        className="rounded-b-3xl shadow-md child pt-20 -translate-y-[180%] flex lg:hidden absolute w-full h-fit left-0 top-0 bg-white "
+                        className={`rounded-b-3xl rounded-t-[2.8rem] child pt-20 -translate-y-[180%]  flex lg:hidden absolute w-full h-fit left-0 top-0 z-30 ${
+                            !scrolled
+                                ? "effect"
+                                : "backdrop-blur-xl bg-[#ffffff8d]"
+                        }`}
                         gap={20}
                     >
                         <Wrapper>
