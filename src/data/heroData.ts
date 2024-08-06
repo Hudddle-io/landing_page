@@ -8,6 +8,6 @@ export const heroData = [
 ];
 
 export const heroTitleBeforeSpan = convertTextToArray(
-    "Building trust for remote work and"
+    "Making work fun , engaging and measurable."
 );
 export const heroTitleAfterSpan = convertTextToArray(" in remote workers");

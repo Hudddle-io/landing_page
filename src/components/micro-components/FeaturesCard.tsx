@@ -11,13 +11,15 @@ export const FeaturesCard: FC<FeaturesCardProps> = ({
 }) => {
     return (
         <Container
-            className="features items-start lg:items-center opacity-0"
+            className="features items-start opacity-0"
             layout="row"
             gap={32}
         >
             <img src={image} alt="" className="w-[50px] h-[50px]" />
             <Container layout="column" gap={12}>
-                <Heading variant="title">{title}</Heading>
+                <Heading variant="title" className="text-[#EEAE05]">
+                    {title}
+                </Heading>
                 <Text variant="text-3" color="dark-3">
                     {description}
                 </Text>

@@ -1,27 +1,28 @@
-import file from '../assets/file.svg';
-import account from '../assets/account.svg';
-import books from '../assets/books.svg';
-import track from '../assets/track.svg'
+import featuresIcon from "../assets/featuresIcon.svg";
 
 export const features = [
     {
-      image: file,
-      title: 'Simplified Task Management:',
-      description: 'Track progress with a Kanban board and task sheets, focusing on results rather than micromanagement',
+        image: featuresIcon,
+        title: "Point-based rewards for work",
+        description:
+            "Get points for finishing work early, getting high quality results and collaborating with your team mates. ",
     },
     {
-      image: account,
-      title: 'Enhanced Collaboration',
-      description: 'Facilitate real-time communication with live workspaces (similar to Discord rooms) and screen sharing options.',
+        image: featuresIcon,
+        title: "Live-workroom collaboration ",
+        description:
+            "Work with your teammates in a challenging live work environment that presents daily challenges to beat.",
     },
     {
-      image: books,
-      title: 'Peer-app focused tracking',
-      description: 'Track task completion and software usage relevant to work, not overall activity, promoting trust and reducing stress.',
+        image: featuresIcon,
+        title: "Daily work challenges",
+        description:
+            "Challenge your team to daily challenges that make you work towards a target improve your productivity.",
     },
     {
-      image: track,
-      title: 'Transparent Accountability',
-      description: 'Enable peer-reviewed work completion rates and shared task updates to foster a culture of ownership',
+        image: featuresIcon,
+        title: "Leaderboards for healthy competiton",
+        description:
+            "Follow the leader and compete to get to the top of the leaderboard. Make work competitive, engaging and fun.",
     },
-  ];
+];

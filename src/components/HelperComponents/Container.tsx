@@ -15,9 +15,11 @@ export const Container: FC<ContainerProps> = ({
     paddingX,
     paddingY,
     sectionId,
+    ...props
 }) => {
     return (
         <div
+            {...props}
             id={sectionId}
             className={`flex ${className ? className : null} px-[${
                 paddingX ? `${paddingX}px` : ""

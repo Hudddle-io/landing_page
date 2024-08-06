@@ -1,33 +1,59 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import Man from "../assets/man-portrait.svg";
+import trophies from "../assets/tropies.svg";
+import Torus from "../assets/Torus.svg";
+import MetalTorus from "../assets/MetalTorus.png";
 import bullet1 from "../assets/bullet1.svg";
 import bullet2 from "../assets/bullet2.svg";
 import bullet3 from "../assets/bullet3.svg";
 import { Button } from "./ui/Button";
-import { Input } from "./ui/Input";
 import { Wrapper } from "./HelperComponents/Wrapper";
 import { Container } from "./HelperComponents/Container";
 import { Heading } from "./HelperComponents/Heading";
 import { Text } from "./HelperComponents/Text";
 import { Layout } from "./HelperComponents/Layout";
-import {
-    heroData,
-    heroTitleAfterSpan,
-    heroTitleBeforeSpan,
-} from "../data/heroData";
+import { heroData, heroTitleBeforeSpan } from "../data/heroData";
 import { Detail } from "./ui/Detail";
 import { HeadingContainer } from "./micro-components/HeadingContainer";
+import { useFloatAnimation } from "../hooks/useFloatAnimation";
+import { NavLink } from "react-router-dom";
 
 const Hero = () => {
-    // Timeline animations
-    const introTl = gsap.timeline({ delay: 0.02 });
+    const blurRef = useRef<HTMLImageElement>(null);
+
+    useFloatAnimation(
+        blurRef.current,
+        [24, 23, 32, 33],
+        [74, 84, 34, 25],
+        [63, 23, 24, 54],
+        [34, 34, 34, 23]
+    );
+
+    const animateBlurRef = () => {
+        const container = blurRef.current?.parentElement;
+        if (!container || !blurRef.current) return;
+
+        let containerWidth = container.offsetWidth;
+        let containerHeight = container.offsetHeight;
+
+        if (containerWidth > 1400) containerWidth = 1400;
+        if (containerHeight > 1400) containerHeight = 1400;
+
+        gsap.to(blurRef.current, {
+            left: Math.round(Math.random() * containerWidth),
+            top: Math.round(Math.random() * containerHeight),
+            ease: "power3.in",
+            duration: 10,
+            onComplete: animateBlurRef,
+        });
+    };
 
     useEffect(() => {
         const introCard = document.querySelectorAll(".introCard");
-        const inputContainer = document.querySelector(".input");
-        const inputElement = inputContainer?.querySelector("input");
 
+        animateBlurRef();
+
+        const introTl = gsap.timeline({ delay: 0.02 });
         introTl.to(".man", {
             scale: 1,
             y: 0,
@@ -89,73 +115,56 @@ const Hero = () => {
                 ease: "power2.in",
             });
         });
-
-        if (inputContainer) {
-            // bring it up
-            introTl.to(inputContainer, {
-                width: "fit-content",
-                y: 0,
-                opacity: 1,
-                duration: 1.2,
-                ease: "power2.in",
-            });
-            // expand
-        }
-        introTl.to(inputContainer, {
-            width: "100%",
-            maxWidth: "552px",
-            delay: 0.2,
-            duration: 1,
-            ease: "power2.out",
+        introTl.to(".hero-btn", {
+            opacity: 1,
         });
-        if (inputElement) {
-            introTl.to(inputElement, {
-                display: "flex",
-                duration: 0.5,
-                ease: "power2.in",
-            });
-        }
     });
 
     return (
         <Container
             sectionId="home"
-            className={`mt-10 lg:mt-0 bg-[url(/assets/svgs/hero-background.svg)] bg-cover bg-no-repeat bg-center bg-fixed min-h-screen`}
+            className="relative lg:mt-0 min-h-screen overflow-hidden "
             Justify="start"
             layout="row"
         >
-            <Wrapper className="min-h-screen flex items-center overflow-hidden">
+            <img
+                ref={blurRef}
+                src={MetalTorus}
+                alt=""
+                className="mtt w-[583px] h-[583px] absolute top-[7%] right-[35%] translate-x-10 opacity-0 z-10 blur-xs imgtask animate-spin-slow"
+            />
+            <div className="absolute top-0 left-0 w-full h-full backdrop-blur-xl z-20"></div>
+            <Wrapper className="min-h-screen h-[1000px] md:h-fit flex lg:items-center lg:justify-start items-start overflow-hidden z-30 w-full">
                 <Container
-                    className="pt-14 max-sm:flex-col"
+                    className="pt-14 max-sm:flex-col w-full max-w-[700px] justify-start "
                     maxHeight={"auto"}
-                    maxWidth={700}
                     layout="column"
                     Align="start"
                     gap={24}
                 >
                     <Heading
-                        className="overflow-hidden flex gap-2 flex-wrap"
+                        className="overflow-hidden inline-flex gap-2 flex-wrap"
                         variant="heading"
                     >
                         {heroTitleBeforeSpan.map((el) => (
                             <HeadingContainer list={el} />
                         ))}
-                        <span className="relative overflow-hidden bg-gradient-to-tr from-[#4B9BD0] to-[#54C6A4] text-transparent bg-clip-text">
-                            <div className="prd absolute translate-y-10 opacity-0 bg-gradient-to-tr from-[#4B9BD0] to-[#54C6A4] w-full h-full left-0 right-0"></div>
-                            {""}{" "}
-                            <div className="prdTwo opacity-0">productivity</div>
+                        <span className="relative overflow-hidden bg-[#956FD6] text-transparent bg-clip-text">
+                            <div className="prd absolute translate-y-10 opacity-0 bg-[#956FD6] w-full h-full left-0 right-0"></div>
+                            {""}
+                            <div className="prdTwo opacity-0">
+                                The future of work is play.
+                            </div>
                         </span>{" "}
-                        {heroTitleAfterSpan.map((el) => (
-                            <HeadingContainer list={el} />
-                        ))}
                     </Heading>
                     <Text
                         className="lg:pr-14 heroTwo opacity-0 translate-y-10"
                         color="dark-3"
                         variant="text-1"
                     >
-                        Huddle.io targets small and medium-sized businesses
-                        (SMBs) with remote or hybrid workforces.
+                        We’re building a remote work tool that helps remote
+                        teams build collaboration using gamified task tracking
+                        and social comparison. We’re making work fun.
                     </Text>
                     <Layout
                         className=""
@@ -164,39 +173,40 @@ const Hero = () => {
                         gap={16}
                         element={Detail}
                     />
-                    <Input
-                        className="input opacity-0"
-                        type="email"
-                        placeholder="Enter your email address"
-                    >
+                    <NavLink to={"/register"} className="w-full md:w-fit z-20">
                         <Button
-                            className="w-full lg:w-fit  ml-auto h-full lg:relative absolute bottom-0 left-0 translate-y-[150%] lg:translate-y-[0%]"
+                            className="hero-btn lg:w-fit opacity-0 ml-auto h-full "
                             progressText="processing"
                         >
                             Join The Waitlist
                         </Button>
-                    </Input>
+                    </NavLink>
                 </Container>
-                <div className="hidden lg:flex h-[450px] w-[805px] absolute right-0 bottom-0">
+                <div className="flex h-[450px] w-[805px] absolute right-0 bottom-0">
                     <img
                         src={bullet3}
                         alt=""
-                        className="w-[306px] h-[68px] absolute -top-[15%] right-[20%] translate-x-20 opacity-0 z-20 blur-xs imgtask"
+                        className="hidden md:flex w-[306px] h-[68px] absolute -top-[15%] right-[20%] translate-x-20 opacity-0 z-30 blur-xs imgtask"
                     />
                     <img
                         src={bullet2}
                         alt=""
-                        className="w-[250px] h-[66px] absolute top-[50%] left-[10%] z-20 -translate-x-20 opacity-0 blur-xs imgtask"
+                        className="hidden md:flex w-[250px] h-[66px] absolute top-[50%] left-[10%] z-30 -translate-x-20 opacity-0 blur-xs imgtask"
                     />
                     <img
                         src={bullet1}
                         alt=""
-                        className="w-[250px] h-[66px] absolute top-[80%] right-[20%] translate-x-20 opacity-0 z-20 blur-xs imgtask"
+                        className="hidden md:flex w-[250px] h-[66px] absolute top-[80%] right-[20%] translate-x-20 opacity-0 z-30 blur-xs imgtask"
                     />
                     <img
-                        src={Man}
-                        alt="Man Portrait"
-                        className="man scale-0 translate-y-[100%] h-full w-full object-fit"
+                        src={trophies}
+                        alt=""
+                        className="animate-float-One w-[389px] h-[389px] lg:w-[635px] lg:h-[634px] absolute -bottom-[15%] -right-[5%] translate-x-20 opacity-0 z-20 blur-xs imgtask"
+                    />
+                    <img
+                        src={Torus}
+                        alt=""
+                        className="hidden md:flex animate-float-Two w-[583px] h-[583px] absolute -top-[35%] right-[10%] translate-x-10 opacity-0 z-10 blur-xs imgtask"
                     />
                 </div>
             </Wrapper>
