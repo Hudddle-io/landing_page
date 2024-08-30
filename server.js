@@ -1,6 +1,10 @@
 import express from 'express';
+import path from 'path';
+import app from 'express';
+
+/*const express = require('express');
 const path = require('path');
-const app = express();
+const app = express(); */
 
 // Serve the static files from the dist directory
 app.use(express.static(path.join(__dirname, 'dist')));
