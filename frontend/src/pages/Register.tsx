@@ -1,4 +1,3 @@
-// src/pages/Register.tsx
 import gsap from "gsap";
 import { Container } from "../components/HelperComponents/Container";
 import { Heading } from "../components/HelperComponents/Heading";
@@ -65,7 +64,7 @@ const Register = () => {
         setModal(false);
     };
 
-    const api_endpoint = "https://landing-page-ruxa.onrender.com/register/";
+    const api_endpoint = "http://127.0.0.1:8000/register/";
 
     const onSubmit: SubmitHandler<FormFields> = async (reqData) => {
         console.log(reqData);
@@ -95,6 +94,7 @@ const Register = () => {
             setError("root", {
                 message: "server error occurred",
             });
+            // Handle the error (e.g., display an error message to the user)
         }
     };
 
@@ -278,12 +278,9 @@ const Register = () => {
                             )}
                         </Input>
 
-                        <Checkbox
-                            inputProps={{
-                                ...register("agree_terms"),
-                                id: "agree_terms",
-                                name: "agree_terms",
-                            }}
+                        <Checkbox 
+                            register={register("agree_terms")}
+                            name="agree_terms"
                             className="z-30"
                         >
                             {" "}
@@ -292,12 +289,9 @@ const Register = () => {
                                 terms of service
                             </Link>
                         </Checkbox>
-                        <Checkbox
-                            inputProps={{
-                                ...register("agree_marketing"),
-                                id: "agree_marketing",
-                                name: "agree_marketing",
-                            }}
+                        <Checkbox 
+                            register={register("agree_marketing")}
+                            name="agree_marketing"
                             className="z-30"
                         >
                             {" "}
