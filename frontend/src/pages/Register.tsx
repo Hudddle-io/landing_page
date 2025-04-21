@@ -278,7 +278,7 @@ const Register = () => {
                             )}
                         </Input>
 
-                        <Checkbox 
+{/*                         <Checkbox 
                             register={register("agree_terms")}
                             name="agree_terms"
                             className="z-30"
@@ -296,7 +296,7 @@ const Register = () => {
                         >
                             {" "}
                             I agree to receive marketing updates from Huddle
-                        </Checkbox>
+                        </Checkbox> */}
 
                         <button
                             disabled={isSubmitting}
