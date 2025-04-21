@@ -33,6 +33,8 @@ const schema = z.object({
     first_name: z.string().nonempty("First Name is required"),
     last_name: z.string(),
     email: z.string().email("Invalid email address"),
+    agree_terms: z.boolean().default(true),
+    agree_marketing: z.boolean().optional(),
 });
 
 type FormFields = z.infer<typeof schema>;
@@ -41,11 +43,15 @@ const Register = () => {
     const {
         register,
         handleSubmit,
-        reset, // Add this line
+        reset,
         setError,
         formState: { errors, isSubmitting, submitCount },
     } = useForm<FormFields>({
         resolver: zodResolver(schema),
+        defaultValues: {
+            agree_terms: true,
+            agree_marketing: true,
+        },
     });
 
     const [modal, setModal] = useState(false);
@@ -58,7 +64,7 @@ const Register = () => {
         setModal(false);
     };
 
-    const api_endpoint = "https://waitlist-hudddle.onrender.com/api/waitlist/";
+    const api_endpoint = "http://127.0.0.1:8000/register/";
 
     const onSubmit: SubmitHandler<FormFields> = async (reqData) => {
         console.log(reqData);
@@ -272,14 +278,22 @@ const Register = () => {
                             )}
                         </Input>
 
-                        <Checkbox className="z-30">
+                        <Checkbox 
+                            register={register("agree_terms")}
+                            name="agree_terms"
+                            className="z-30"
+                        >
                             {" "}
                             I agree to the{" "}
                             <Link to={"#"} className="text-[#2684FF]">
                                 terms of service
                             </Link>
                         </Checkbox>
-                        <Checkbox className="z-30">
+                        <Checkbox 
+                            register={register("agree_marketing")}
+                            name="agree_marketing"
+                            className="z-30"
+                        >
                             {" "}
                             I agree to receive marketing updates from Huddle
                         </Checkbox>
