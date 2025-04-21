@@ -64,7 +64,7 @@ const Register = () => {
         setModal(false);
     };
 
-    const api_endpoint = "http://127.0.0.1:8000/register/";
+    const api_endpoint = "https://landing-page-ruxa.onrender.com/register/";
 
     const onSubmit: SubmitHandler<FormFields> = async (reqData) => {
         console.log(reqData);
