@@ -10,7 +10,7 @@ import { heroData, heroTitleBeforeSpan } from "../data/heroData";
 import { useGSAP } from "@gsap/react";
 import { Link } from "react-router-dom";
 import { Input } from "../components/ui/Input";
-import { Checkbox } from "../components/ui/Checkbox";
+// import { Checkbox } from "../components/ui/Checkbox";
 import logo from "../assets/huddle-logo.svg";
 import trophies from "../assets/tropies.svg";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -33,8 +33,8 @@ const schema = z.object({
     first_name: z.string().nonempty("First Name is required"),
     last_name: z.string(),
     email: z.string().email("Invalid email address"),
-    agree_terms: z.boolean().default(true),
-    agree_marketing: z.boolean().optional(),
+    // agree_terms: z.boolean().default(true),
+    // agree_marketing: z.boolean().optional(),
 });
 
 type FormFields = z.infer<typeof schema>;
@@ -48,10 +48,10 @@ const Register = () => {
         formState: { errors, isSubmitting, submitCount },
     } = useForm<FormFields>({
         resolver: zodResolver(schema),
-        defaultValues: {
-            agree_terms: true,
-            agree_marketing: true,
-        },
+        // defaultValues: {
+        //     agree_terms: true,
+        //     agree_marketing: true,
+        // },
     });
 
     const [modal, setModal] = useState(false);
@@ -278,7 +278,7 @@ const Register = () => {
                             )}
                         </Input>
 
-                        <Checkbox 
+{/*                         <Checkbox 
                             register={register("agree_terms")}
                             name="agree_terms"
                             className="z-30"
@@ -296,7 +296,7 @@ const Register = () => {
                         >
                             {" "}
                             I agree to receive marketing updates from Huddle
-                        </Checkbox>
+                        </Checkbox> */}
 
                         <button
                             disabled={isSubmitting}
