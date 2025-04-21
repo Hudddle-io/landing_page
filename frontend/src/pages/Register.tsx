@@ -281,6 +281,7 @@ const Register = () => {
                         <Checkbox 
                             register={register("agree_terms")}
                             name="agree_terms"
+                            required
                             className="z-30"
                         >
                             {" "}
@@ -292,6 +293,7 @@ const Register = () => {
                         <Checkbox 
                             register={register("agree_marketing")}
                             name="agree_marketing"
+                            required
                             className="z-30"
                         >
                             {" "}
