@@ -35,8 +35,8 @@ const Roadmap = () => {
         };
     }, []);
 
-    const startDate = new Date("2024-04-30");
-    const endDate = new Date("2024-08-31");
+    const startDate = new Date("2025-04-02");
+    const endDate = new Date("2025-05-7");
     const currentDate = new Date();
 
     const totalDuration = (endDate.getTime() - startDate.getTime()) / 1000; // Total duration in seconds
@@ -141,12 +141,12 @@ const Roadmap = () => {
     };
 
     const milestones = [
-        { title: "Milestone 1: Huddle Starts", date: new Date("2024-04-30") },
+        { title: "Milestone 1: Huddle Starts", date: new Date("2025-04-02") },
         {
             title: "Milestone 2: Waitlist Community",
-            date: new Date("2024-08-07"),
+            date: new Date("2025-04-21"),
         },
-        { title: "Milestone 3: MVP Launch", date: new Date("2024-08-31") },
+        { title: "Milestone 3: MVP Launch", date: new Date("2025-05-07") },
     ];
 
     return (
